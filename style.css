@@ -10,3 +10,8 @@ strong {
 code {
 	color: orange;
 }
+
+.highlight-me {
+	color: black;
+	font-weight: 300;
+}

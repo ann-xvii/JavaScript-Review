@@ -8,7 +8,7 @@
 </head>
 <body style="font-family: 'Roboto';">
 <h1><a href="https://www.safaribooksonline.com/library/view/learning-javascript-data/9781783554874/" target="_blank">Learning JavaScript Data Structures and Algorithms</a></h1>
-
+<h2 class="highlight-me">This is Throwback... Tuesday</h2>
 <h2>Ch.1 Javascript Overview</h2>
 
 <h3>Truthy and Falsey Values</h3>
@@ -186,7 +186,56 @@
 </ol>
 
 <p>We can also create an object entirely as follows:</p>
-<code>obj = { name: { first: 'Gandalf', last: 'the Grey' }, address: 'Middle Earth' };</code>
+<code><pre>obj = { name: { first: 'Gandalf', last: 'the Grey' }, address: 'Middle Earth' };</pre></code>
+
+<p>In OOP, an object is an instance of a class. A class defines the characteristics of the object.</p>
+<strong>Example:</strong><br>
+<p>This is how we declare a class that represents a book:</p>
+<code><pre>function Book(title, pages, isbn){
+	this.title = title;
+	this.pages = pages;
+	this.isbn = isbn;
+}</pre></code>
+
+<p>To instantiate this class, we can use the following code: </p>
+<code><pre>
+	var book = new Book('title', 'pag', 'isbn');
+</pre></code>
+<p>Then we can access its attributes and update them as follows:</p>
+<code><pre>
+	console.log(book.title);
+	book.title = 'Generation P';
+	// updates the value of the book title
+	console.log(book.title); // outputs the updated value
+</pre></code>
+
+<p>A class can also contain methods(functions):</p>
+<code><pre>
+	Book.prototype.printTitle = function(){
+	   console.log(this.title);
+	};
+	book.printTitle();
+</pre></code>
+
+<p>We can also declare functions directly inside the class definition as well:</p>
+<code><pre>
+	function Book(title, pages, isbn) {
+		this.title = title;
+		this.pages = pages;
+		this.isbn = isbn;
+		this.printIsbn = function(){
+			console.log(this.isbn);
+		}
+	}
+</pre></code>
+
+<p>In the <strong>prototype</strong> example, the <code>printTitle</code> function is going to be shared between all instances, and only one copy is going to be created.</p>
+<p>When we use class-based definition, each instance of the class will have its own copy of the functions.</p>
+
+<p>Using the protoype method saves memory and processing cost in regards to assigning the function to the instance.</p>
+<p><em>however, you can only declare public functions and properties using the prototype method.</em><br><em>With a class-based definition, you can declare private functions and properties and the other methods inside the class can also access them.</em></p>
+
+<p>Whenever possible, use the prototype method, unless, you need to keep some properties and methods private</p>
 <h2>Ch.2 Arrays</h2>
 <h2>Ch.3 Stacks</h2>
 <h2>Ch.4 Queues</h2>

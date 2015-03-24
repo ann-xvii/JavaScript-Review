@@ -145,6 +145,34 @@ var result = sum(1, 2);
 output(result);
 
 
+function Book(title, pages, isbn){
+	this.title = title;
+	this.pages = pages;
+	this.isbn = isbn;
+}
+
+var book = new Book('title', 'pag', 'isbn');
+console.log(book.title);
+book.title = 'Generation P';
+book.isbn = 'isbnisbnisbn1234'
+// updates the value of the book title
+console.log(book.title); // outputs the updated value
+console.log(book.isbn);
+
+Book.prototype.printTitle = function(){
+	console.log(this.title + " yo");
+};
+book.printTitle();
 
 
+function Book(title, pages, isbn) {
+	this.title = title;
+	this.pages = pages;
+	this.isbn = isbn;
+	this.printIsbn = function(){
+		console.log(this.isbn);
+	}
+}
 
+var new_book = new Book('new title', 768, 'isbnisbnisbn1234');
+new_book.printIsbn();
