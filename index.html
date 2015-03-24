@@ -9,234 +9,242 @@
 <body style="font-family: 'Roboto';">
 <h1><a href="https://www.safaribooksonline.com/library/view/learning-javascript-data/9781783554874/" target="_blank">Learning JavaScript Data Structures and Algorithms</a></h1>
 <h2 class="highlight-me">This is Throwback... Tuesday</h2>
-<h2>Ch.1 Javascript Overview</h2>
+<div>
+	<h2>Ch.1 Javascript Overview</h2>
 
-<h3>Truthy and Falsey Values</h3>
-<table>
-	<thead>
+	<h3>Truthy and Falsey Values</h3>
+	<table>
+		<thead>
 
-		<tr>
-			<th>Value type</th>
-			<th>Result</th>
-		</tr>
+			<tr>
+				<th>Value type</th>
+				<th>Result</th>
+			</tr>
 
-	</thead>
+		</thead>
 
-	<tbody>
+		<tbody>
 
-		<tr>
-			<td>undefined</td>
-			<td>false</td>
-		</tr>
+			<tr>
+				<td>undefined</td>
+				<td>false</td>
+			</tr>
 
-		<tr>
-			<td>null</td>
-			<td>false</td>
-		</tr>
-		<tr>
-			<td>Boolean</td>
-			<td>true is true, false is false!</td>
-		</tr>
-		<tr>
-			<td>Number</td>
-			<td>the result is false for +0, -0 or NaN; otherwise, the result is true</td>
-		</tr>
-		<tr>
-			<td>String</td>
-			<td>The result is false if the string is empty (length is 0), or true otherwise</td>
-		</tr>
-		<tr>
-			<td>Object</td>
-			<td>true</td>
-		</tr>
-	</tbody>
-</table>
+			<tr>
+				<td>null</td>
+				<td>false</td>
+			</tr>
+			<tr>
+				<td>Boolean</td>
+				<td>true is true, false is false!</td>
+			</tr>
+			<tr>
+				<td>Number</td>
+				<td>the result is false for +0, -0 or NaN; otherwise, the result is true</td>
+			</tr>
+			<tr>
+				<td>String</td>
+				<td>The result is false if the string is empty (length is 0), or true otherwise</td>
+			</tr>
+			<tr>
+				<td>Object</td>
+				<td>true</td>
+			</tr>
+		</tbody>
+	</table>
 
 
-<h3>The Equals Operators (== and ===)</h3>
-<table>
-	<thead>
-		<tr>
+	<h3>The Equals Operators (== and ===)</h3>
+	<table>
+		<thead>
+			<tr>
+				<th>Type(x)</th>
+				<th>Type(y)</th>
+				<th>Result</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>null</td>
+				<td>undefined</td>
+				<td>true</td>
+			</tr>
+			<tr>
+				<td>undefined</td>
+				<td>null</td>
+				<td>true</td>
+			</tr>
+			<tr>
+				<td>Number</td>
+				<td>String</td>
+				<td>x == toNumber(y)... type coercion</td>
+			</tr>
+			<tr>
+				<td>String</td>
+				<td>Number</td>
+				<td>toNumber(x) == y</td>
+			</tr>
+			<tr>
+				<td>Boolean</td>
+				<td>Any</td>
+				<td>toNumber(x) == y</td>
+			</tr>
+			<tr>
+				<td>Any</td>
+				<td>Boolean</td>
+				<td>x == toNumber(y)</td>
+			</tr>
+			<tr>
+				<td>String or Number</td>
+				<td>Object</td>
+				<td>x == toPrimitive(y)</td>
+			</tr>
+			<tr>
+				<td>Object</td>
+				<td>String or Number</td>
+				<td>toPrimitive(x) == y</td>
+			</tr>
+		</tbody>
+	</table>
+	<p>If x and y are the same type, then JavaScript will use the equals method to compare the two values or objects</p>
+	<p>Any other combo not listed yields false</p>
+	<p>the <strong>toNumber</strong> and <strong>toPrimitive</strong> methods are internal and evaluate the values according to the tables that follow</p>
+
+	<h4>The <strong>toNumber</strong> method:</h4>
+	<table>
+		<thead>
 			<th>Type(x)</th>
 			<th>Type(y)</th>
+		</thead>
+		<tbody>
+			<tr>
+				<td>undefined</td>
+				<td>NaN</td>
+			</tr>
+			<tr>
+				<td>null</td>
+				<td>+0</td>
+			</tr>
+			<tr>
+				<td>Boolean</td>
+				<td>If the value is true, the result is 1; if it is false, the result is +0</td>
+			</tr>
+			<tr>
+				<td>Number</td>
+				<td>The value of the number</td>
+			</tr>
+			<tr>
+				<td>String</td>
+				<td>the <strong>toNumber</strong> method called on a string object parses the string into a number.  If the string consists of alphabetical characters, the result is NaN. If the string consists of numbers, it is transformed into a numbr</td>
+			</tr>
+			<tr>
+				<td>Object</td>
+				<td><strong>toNumber(toPrimitive(value))</strong></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<h4>The <strong>toPrimitive</strong> method is presented here:</h4>
+	<table>
+		<thead>
+			<th>Value Type</th>
 			<th>Result</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>null</td>
-			<td>undefined</td>
-			<td>true</td>
-		</tr>
-		<tr>
-			<td>undefined</td>
-			<td>null</td>
-			<td>true</td>
-		</tr>
-		<tr>
-			<td>Number</td>
-			<td>String</td>
-			<td>x == toNumber(y)... type coercion</td>
-		</tr>
-		<tr>
-			<td>String</td>
-			<td>Number</td>
-			<td>toNumber(x) == y</td>
-		</tr>
-		<tr>
-			<td>Boolean</td>
-			<td>Any</td>
-			<td>toNumber(x) == y</td>
-		</tr>
-		<tr>
-			<td>Any</td>
-			<td>Boolean</td>
-			<td>x == toNumber(y)</td>
-		</tr>
-		<tr>
-			<td>String or Number</td>
-			<td>Object</td>
-			<td>x == toPrimitive(y)</td>
-		</tr>
-		<tr>
-			<td>Object</td>
-			<td>String or Number</td>
-			<td>toPrimitive(x) == y</td>
-		</tr>
-	</tbody>
-</table>
-<p>If x and y are the same type, then JavaScript will use the equals method to compare the two values or objects</p>
-<p>Any other combo not listed yields false</p>
-<p>the <strong>toNumber</strong> and <strong>toPrimitive</strong> methods are internal and evaluate the values according to the tables that follow</p>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Object</td>
+				<td>If <strong>valueOf</strong> returns a primitive value, this returns the primitive value; otherwise, if <strong>toString</strong> returns a primitive value this returns the primitive value; otherwise returns an error</td>
+			</tr>
+		</tbody>
+	</table>
+	<br/>
+	<strong>Example:</strong>
+	<code>console.log('packt' == true);</code> returns false!
+	<ol>
+		<li>First, it converts the Boolean value using <strong>toNumber</strong>, so we have <strong>packt == 1</strong>.</li>
+		<li>Then, it converts the string value using <strong>toNumber</strong>. As the string consists of alphanumerical characters, it returns NaN. So we have <code>NaN == 1</code>, which is false</li>
+	</ol>
 
-<h4>The <strong>toNumber</strong> method:</h4>
-<table>
-	<thead>
-		<th>Type(x)</th>
-		<th>Type(y)</th>
-	</thead>
-	<tbody>
-		<tr>
-			<td>undefined</td>
-			<td>NaN</td>
-		</tr>
-		<tr>
-			<td>null</td>
-			<td>+0</td>
-		</tr>
-		<tr>
-			<td>Boolean</td>
-			<td>If the value is true, the result is 1; if it is false, the result is +0</td>
-		</tr>
-		<tr>
-			<td>Number</td>
-			<td>The value of the number</td>
-		</tr>
-		<tr>
-			<td>String</td>
-			<td>the <strong>toNumber</strong> method called on a string object parses the string into a number.  If the string consists of alphabetical characters, the result is NaN. If the string consists of numbers, it is transformed into a numbr</td>
-		</tr>
-		<tr>
-			<td>Object</td>
-			<td><strong>toNumber(toPrimitive(value))</strong></td>
-		</tr>
-	</tbody>
-</table>
-
-<h4>The <strong>toPrimitive</strong> method is presented here:</h4>
-<table>
-	<thead>
-		<th>Value Type</th>
-		<th>Result</th>
-	</thead>
-	<tbody>
-		<tr>
-			<td>Object</td>
-			<td>If <strong>valueOf</strong> returns a primitive value, this returns the primitive value; otherwise, if <strong>toString</strong> returns a primitive value this returns the primitive value; otherwise returns an error</td>
-		</tr>
-	</tbody>
-</table>
-<br/>
-<strong>Example:</strong>
-<code>console.log('packt' == true);</code> returns false!
-<ol>
-	<li>First, it converts the Boolean value using <strong>toNumber</strong>, so we have <strong>packt == 1</strong>.</li>
-	<li>Then, it converts the string value using <strong>toNumber</strong>. As the string consists of alphanumerical characters, it returns NaN. So we have <code>NaN == 1</code>, which is false</li>
-</ol>
-
-<h4>What about <strong>===</strong>?</h4>
-<p>Type and value check.</p>
-<p>When comparing <strong>Objects</strong>, <strong>===</strong> will only yield true if x and y reference the same object.</p>
-<br>
-<strong>Example:</strong>
-<br>
-<code>var person1 = {name: 'John'};</code>
-<br>
-<code>var person2 = {name: 'John'};</code>
-<br>
-<code>console.log(person1 === person2);</code>yields false: they are different objects.
+	<h4>What about <strong>===</strong>?</h4>
+	<p>Type and value check.</p>
+	<p>When comparing <strong>Objects</strong>, <strong>===</strong> will only yield true if x and y reference the same object.</p>
+	<br>
+	<strong>Example:</strong>
+	<br>
+	<code>var person1 = {name: 'John'};</code>
+	<br>
+	<code>var person2 = {name: 'John'};</code>
+	<br>
+	<code>console.log(person1 === person2);</code>yields false: they are different objects.
 
 
-<h3>Object-oriented programming</h3>
-<p>Javascript objects are very simple collections of name value pairs.</p>
-<p>There are two ways of creating a simple object in Javascript:</p>
-<ol>
-	<li><code>var obj = new Object();</code></li>
-	<li><code>var obj = {};</code></li>
-</ol>
+	<h3>Object-oriented programming</h3>
+	<p>Javascript objects are very simple collections of name value pairs.</p>
+	<p>There are two ways of creating a simple object in Javascript:</p>
+	<ol>
+		<li><code>var obj = new Object();</code></li>
+		<li><code>var obj = {};</code></li>
+	</ol>
 
-<p>We can also create an object entirely as follows:</p>
-<code><pre>obj = { name: { first: 'Gandalf', last: 'the Grey' }, address: 'Middle Earth' };</pre></code>
+	<p>We can also create an object entirely as follows:</p>
+	<code><pre>obj = { name: { first: 'Gandalf', last: 'the Grey' }, address: 'Middle Earth' };</pre></code>
 
-<p>In OOP, an object is an instance of a class. A class defines the characteristics of the object.</p>
-<strong>Example:</strong><br>
-<p>This is how we declare a class that represents a book:</p>
-<code><pre>function Book(title, pages, isbn){
-	this.title = title;
-	this.pages = pages;
-	this.isbn = isbn;
-}</pre></code>
-
-<p>To instantiate this class, we can use the following code: </p>
-<code><pre>
-	var book = new Book('title', 'pag', 'isbn');
-</pre></code>
-<p>Then we can access its attributes and update them as follows:</p>
-<code><pre>
-	console.log(book.title);
-	book.title = 'Generation P';
-	// updates the value of the book title
-	console.log(book.title); // outputs the updated value
-</pre></code>
-
-<p>A class can also contain methods(functions):</p>
-<code><pre>
-	Book.prototype.printTitle = function(){
-	   console.log(this.title);
-	};
-	book.printTitle();
-</pre></code>
-
-<p>We can also declare functions directly inside the class definition as well:</p>
-<code><pre>
-	function Book(title, pages, isbn) {
+	<p>In OOP, an object is an instance of a class. A class defines the characteristics of the object.</p>
+	<strong>Example:</strong><br>
+	<p>This is how we declare a class that represents a book:</p>
+	<code><pre>function Book(title, pages, isbn){
 		this.title = title;
 		this.pages = pages;
 		this.isbn = isbn;
-		this.printIsbn = function(){
-			console.log(this.isbn);
+	}</pre></code>
+
+	<p>To instantiate this class, we can use the following code: </p>
+	<code><pre>
+		var book = new Book('title', 'pag', 'isbn');
+	</pre></code>
+	<p>Then we can access its attributes and update them as follows:</p>
+	<code><pre>
+		console.log(book.title);
+		book.title = 'Generation P';
+		// updates the value of the book title
+		console.log(book.title); // outputs the updated value
+	</pre></code>
+
+	<p>A class can also contain methods(functions):</p>
+	<code><pre>
+		Book.prototype.printTitle = function(){
+		   console.log(this.title);
+		};
+		book.printTitle();
+	</pre></code>
+
+	<p>We can also declare functions directly inside the class definition as well:</p>
+	<code><pre>
+		function Book(title, pages, isbn) {
+			this.title = title;
+			this.pages = pages;
+			this.isbn = isbn;
+			this.printIsbn = function(){
+				console.log(this.isbn);
+			}
 		}
-	}
-</pre></code>
+	</pre></code>
 
-<p>In the <strong>prototype</strong> example, the <code>printTitle</code> function is going to be shared between all instances, and only one copy is going to be created.</p>
-<p>When we use class-based definition, each instance of the class will have its own copy of the functions.</p>
+	<p>In the <strong>prototype</strong> example, the <code>printTitle</code> function is going to be shared between all instances, and only one copy is going to be created.</p>
+	<p>When we use class-based definition, each instance of the class will have its own copy of the functions.</p>
 
-<p>Using the protoype method saves memory and processing cost in regards to assigning the function to the instance.</p>
-<p><em>however, you can only declare public functions and properties using the prototype method.</em><br><em>With a class-based definition, you can declare private functions and properties and the other methods inside the class can also access them.</em></p>
+	<p>Using the protoype method saves memory and processing cost in regards to assigning the function to the instance.</p>
+	<p><em>however, you can only declare public functions and properties using the prototype method.</em><br><em>With a class-based definition, you can declare private functions and properties and the other methods inside the class can also access them.</em></p>
 
-<p>Whenever possible, use the prototype method, unless, you need to keep some properties and methods private</p>
-<h2>Ch.2 Arrays</h2>
+	<p>Whenever possible, use the prototype method, unless, you need to keep some properties and methods private.</p>
+
+	<h4><a href="https://developer.chrome.com/devtools/docs/javascript-debugging">A tutorial from Google that shows you how to use Google Developer Tools to Debug Javascript</a></h4>
+</div>
+
+<div>
+	<h2>Ch.2 Arrays</h2>
+</div>
+
 <h2>Ch.3 Stacks</h2>
 <h2>Ch.4 Queues</h2>
 <h2>Ch.5 Linked Lists</h2>
