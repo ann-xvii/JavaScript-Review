@@ -244,7 +244,58 @@
 <div>
 	<h2>Ch.2 Arrays</h2>
 
-	<p>An array is the simplest memory data structure. For this reason, all programming languages have a built-in array data type</p>
+	<p>An array is the simplest memory data structure. For this reason, all programming languages have a built-in array data type.</p>
+
+	<p>An array stores a sequence of values that are all of the same data type.  Although JS allows us to create arrays with values from different data types, we will follow the best practices and consider that we cannot do that (most languages don't have this capability).</p>
+
+	<strong>Example use of array</strong>
+	<p>Consider that we need to store the avg temp of each month of the year of the city that we live in:</p>
+	<code><pre>
+		var averageTempJan = 31.9;
+		var averageTempFeb = 35.3;
+		var averageTempMar = 42.4;
+		var averageTempApr = 52;
+		var averageTempMay = 60.8;
+	</pre></code>
+
+	<p>a better approach:</p>
+	<code><pre>
+		averageTemp[0] = 31.9;
+		averageTemp[1] = 35.3;
+		averageTemp[2] = 42.4;
+		averageTemp[3] = 52;
+		averageTemp[4] = 60.8;
+	</pre></code>
+
+	<p>To create an array in JS, the <code>new</code> keyword is not a best practice.  If you want to create an array, simply use brackets (<strong>[ ]</strong>).</p>
+	<strong>e.g.</strong><code>var daysOfWeek = [];</code>
+
+	<h4>Fibonacci Numbers</h4>
+	<p>In mathematical terms, the sequence Fn of Fibonacci numbers is defined by the recurrence relation Fn = Fn-1 + Fn-2</p>
+	<p>with seed values F1 = 1, F2 = 1, or F0 = 0, F1 = 1</p>
+
+	<strong>Example: </strong><p>Let's say we want to find out the first 20 numbers of the Fibonacci sequence. The first two numbers of the Fibonacci sequence here, the seed values, will be 1 and 2 (chosen starting point of sequence).</p>
+	<p>(we skip 0 because there is no 0 in the Fibonacci sequence)</p>
+	<p>Then all we have to do is create the 3rd to 20th number of the sequence (as we have seeded the first two numbers already).</p>
+	<p>To do so, we can use a loop and assign the sum of the previous two positions of the array to the current position</p>
+	<code><pre>
+		// declare and create array
+		var fibonacci = [];
+		// assign the first 2 numbers of the Fibonacci sequence to the second and third positions of the array
+		fibonacci[1] = 1;
+		fibonacci[2] = 1;
+
+		// create the third to the 20th number of the sequence, as we know the first 2 pre-seeded numbers already
+		for (var i = 3; i < 20; i++) {
+			// assign the previous two positions of the array to the current array position
+			fibonacci[i] = fibonacci[i-1] + fibonacci[i-2];
+		}
+
+		for (var i = 1; i < fibonacci.length; i++) {
+			console.log(fibonacci[i]);
+		}
+	</pre></code>
+	<p>This task is well suited for the <strong>array</strong> data structure.</p>
 </div>
 
 <h2>Ch.3 Stacks</h2>

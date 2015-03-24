@@ -176,3 +176,38 @@ function Book(title, pages, isbn) {
 
 var new_book = new Book('new title', 768, 'isbnisbnisbn1234');
 new_book.printIsbn();
+
+
+var daysOfWeek = new Array();
+var daysOfWeek = new Array(7); // specify length of array
+var daysOfWeek = new Array('Sunday', 'Monday', 'etc'); // passing the array elements directly to its constructor
+
+var averageTemp = [];
+averageTemp[0] = 31.9;
+averageTemp[1] = 35.3;
+averageTemp[2] = 42.4;
+averageTemp[3] = 52;
+averageTemp[4] = 60.8;
+
+for (var i = 0; i < averageTemp.length; i++) {
+	console.log('Avg temp in the ' + i + ' month is ' +averageTemp[i]);
+}
+
+
+// say we want to find out the first 20 numbers of the Fibonacci sequence
+
+// the first two numbers of the Fibonacci sequence are 
+// either 1 and 1 or 0 and 1 or 1 and 2 depending on the chosen starting point of the sequesnce
+// and each subsequent number is the sum of the previous two
+
+var fibonacci = [];
+fibonacci[1] = 1;
+fibonacci[2] = 1;
+
+for (var i = 3; i < 20; i++) {
+	fibonacci[i] = fibonacci[i-1] + fibonacci[i-2];
+}
+
+for (var i = 1; i < fibonacci.length; i++) {
+	console.log(fibonacci[i]);
+}
