@@ -109,7 +109,53 @@
 <p>Any other combo not listed yields false</p>
 <p>the <strong>toNumber</strong> and <strong>toPrimitive</strong> methods are internal and evaluate the values according to the tables that follow</p>
 
+<h4>The <strong>toNumber</strong> method:</h4>
+<table>
+	<thead>
+		<th>Type(x)</th>
+		<th>Type(y)</th>
+	</thead>
+	<tbody>
+		<tr>
+			<td>undefined</td>
+			<td>NaN</td>
+		</tr>
+		<tr>
+			<td>null</td>
+			<td>+0</td>
+		</tr>
+		<tr>
+			<td>Boolean</td>
+			<td>If the value is true, the result is 1; if it is false, the result is +0</td>
+		</tr>
+		<tr>
+			<td>Number</td>
+			<td>The value of the number</td>
+		</tr>
+		<tr>
+			<td>String</td>
+			<td>the <strong>toNumber</strong> method called on a string object parses the string into a number.  If the string consists of alphabetical characters, the result is NaN. If the string consists of numbers, it is transformed into a numbr</td>
+		</tr>
+		<tr>
+			<td>Object</td>
+			<td><strong>toNumber(toPrimitive(value))</strong></td>
+		</tr>
+	</tbody>
+</table>
 
+<h4>The <strong>toPrimitive</strong> method is presented here:</h4>
+<table>
+	<thead>
+		<th>Value Type</th>
+		<th>Result</th>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Object</td>
+			<td>If <strong>valueOf</strong> returns a primitive value, this returns the primitive value; otherwise, if <strong>toString</strong> returns a primitive value this returns the primitive value; otherwise returns an error</td>
+		</tr>
+	</tbody>
+</table>
 
 <h2>Ch.2 Arrays</h2>
 <h2>Ch.3 Stacks</h2>
