@@ -55,4 +55,76 @@
 
 	// Truthy and Falsey
 
-	
+	function testTruthy(val) {
+		return val ? console.log('truthy') : console.log('falsey');
+	}
+
+	testTruthy(true);
+	testTruthy(false);
+	testTruthy(new Boolean(false)); // true.... an object is always true
+	// you are declaring a new boolean object
+
+	testTruthy(''); // false
+	testTruthy('Packt'); // true
+	testTruthy(new String('')); // true (object is always true)
+	testTruthy(1); // true
+	testTruthy(-1); // true
+	testTruthy(NaN); // false
+	testTruthy(new Number(NaN)); // true (object is always true!!!)
+	testTruthy({}); // true (object is always true)
+
+	var obj = {name: 'John'};
+	testTruthy(obj); // true
+	testTruthy(obj.name); // true
+	testTruthy(obj.age); // false, the property age does not exist
+
+
+	var num = 1;
+	if (num === 1) {
+		console.log("num is equal to 1!");
+	} else {
+		console.log("num is not equal to 1, the value of num is " + num);
+	}
+
+
+	// ternary operator
+	console.log("num, with ternary operator:");
+	(num === 1) ? num-- : num++;
+	console.log(num);
+
+	var month = 5;
+
+	switch(month) {
+		case 1:
+			console.log("January");
+			break;
+		case 2:
+			console.log("February");
+			break;
+		case 3: 
+			console.log("March");
+			break;
+		default: 
+			console.log("Month is not January, February, or March!");
+	}
+
+
+	// loops: loop counter, usually an assigned numeric value, then the variable is compared against another value and the script inside the for loop is executed while this condition is true; and then the numeric value is increased or decreased
+
+	for (var i = 0; i < 11; i++) {
+		console.log(i);
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

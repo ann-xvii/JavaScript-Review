@@ -11,6 +11,7 @@
 
 <h2>Ch.1 Javascript Overview</h2>
 
+<h3>Truthy and Falsey Values</h3>
 <table>
 	<thead>
 
@@ -50,6 +51,65 @@
 		</tr>
 	</tbody>
 </table>
+
+
+<h3>The Equals Operators (== and ===)</h3>
+<table>
+	<thead>
+		<tr>
+			<th>Type(x)</th>
+			<th>Type(y)</th>
+			<th>Result</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>null</td>
+			<td>undefined</td>
+			<td>true</td>
+		</tr>
+		<tr>
+			<td>undefined</td>
+			<td>null</td>
+			<td>true</td>
+		</tr>
+		<tr>
+			<td>Number</td>
+			<td>String</td>
+			<td>x == toNumber(y)... type coercion</td>
+		</tr>
+		<tr>
+			<td>String</td>
+			<td>Number</td>
+			<td>toNumber(x) == y</td>
+		</tr>
+		<tr>
+			<td>Boolean</td>
+			<td>Any</td>
+			<td>toNumber(x) == y</td>
+		</tr>
+		<tr>
+			<td>Any</td>
+			<td>Boolean</td>
+			<td>x == toNumber(y)</td>
+		</tr>
+		<tr>
+			<td>String or Number</td>
+			<td>Object</td>
+			<td>x == toPrimitive(y)</td>
+		</tr>
+		<tr>
+			<td>Object</td>
+			<td>String or Number</td>
+			<td>toPrimitive(x) == y</td>
+		</tr>
+	</tbody>
+</table>
+<p>If x and y are the same type, then JavaScript will use the equals method to compare the two values or objects</p>
+<p>Any other combo not listed yields false</p>
+<p>the <strong>toNumber</strong> and <strong>toPrimitive</strong> methods are internal and evaluate the values according to the tables that follow</p>
+
+
 
 <h2>Ch.2 Arrays</h2>
 <h2>Ch.3 Stacks</h2>
