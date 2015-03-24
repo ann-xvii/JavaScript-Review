@@ -6,3 +6,7 @@ table, td, tr, th {
 strong {
 	color: navy;
 }
+
+code {
+	color: orange;
+}

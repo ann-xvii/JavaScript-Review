@@ -156,7 +156,37 @@
 		</tr>
 	</tbody>
 </table>
+<br/>
+<strong>Example:</strong>
+<code>console.log('packt' == true);</code> returns false!
+<ol>
+	<li>First, it converts the Boolean value using <strong>toNumber</strong>, so we have <strong>packt == 1</strong>.</li>
+	<li>Then, it converts the string value using <strong>toNumber</strong>. As the string consists of alphanumerical characters, it returns NaN. So we have <code>NaN == 1</code>, which is false</li>
+</ol>
 
+<h4>What about <strong>===</strong>?</h4>
+<p>Type and value check.</p>
+<p>When comparing <strong>Objects</strong>, <strong>===</strong> will only yield true if x and y reference the same object.</p>
+<br>
+<strong>Example:</strong>
+<br>
+<code>var person1 = {name: 'John'};</code>
+<br>
+<code>var person2 = {name: 'John'};</code>
+<br>
+<code>console.log(person1 === person2);</code>yields false: they are different objects.
+
+
+<h3>Object-oriented programming</h3>
+<p>Javascript objects are very simple collections of name value pairs.</p>
+<p>There are two ways of creating a simple object in Javascript:</p>
+<ol>
+	<li><code>var obj = new Object();</code></li>
+	<li><code>var obj = {};</code></li>
+</ol>
+
+<p>We can also create an object entirely as follows:</p>
+<code>obj = { name: { first: 'Gandalf', last: 'the Grey' }, address: 'Middle Earth' };</code>
 <h2>Ch.2 Arrays</h2>
 <h2>Ch.3 Stacks</h2>
 <h2>Ch.4 Queues</h2>

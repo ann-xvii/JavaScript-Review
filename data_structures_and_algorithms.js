@@ -113,16 +113,36 @@
 
 	for (var i = 0; i < 11; i++) {
 		console.log(i);
+		console.log("in the loop!");
 	}
 
 
+// super basic review
+
+var num = 1;
+if (num === 1) {
+	console.log("num is equal to 1 in type and value");
+}
 
 
+// functions with arguments
+
+function output(text){
+	console.log(text);
+}
+
+output('Hola!');
+// in this case, only the first argument is used by the function and the second one is ignored
+output('Wilkommen, Bienvenue, Welcome!', 'Hello!');
 
 
+// returns
+function sum(num1, num2) {
+	return num1 + num2;
+}
 
-
-
+var result = sum(1, 2);
+output(result);
 
 
 
