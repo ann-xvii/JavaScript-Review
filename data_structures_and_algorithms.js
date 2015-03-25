@@ -279,27 +279,123 @@ printMatrix(averageTemp);
 
 var matrix3x3x3 = [];
 
-for (var i = 0; i < 3; i++) {
-	matrix3x3x3[i] = [];
-	for (var j = 0; j < 3; j++) {
-		matrix3x3x3[i][j] = [];
-		for (var z = 0; z < 3; z++) {
-			matrix3x3x3[i][j][z] = i+j+z;
-			console.log(matrix3x3x3);
-;		}
-	}
-}
+// for (var i = 0; i < 3; i++) {
+// 	matrix3x3x3[i] = [];
+// 	for (var j = 0; j < 3; j++) {
+// 		matrix3x3x3[i][j] = [];
+// 		for (var z = 0; z < 3; z++) {
+// 			matrix3x3x3[i][j][z] = i+j+z;
+// 			console.log(matrix3x3x3);
+// 		}
+// 	}
+// }
 
 
 // to output the matrix, we can use the following code
 
-for (var i=0; i < matrix3x3x3.length; i++) {
-	for (var j=0; j < matrix3x3x3[i].length; j++) {
-		for (var z=0; z < matrix3x3x3[i][j].length; z++) {
-			console.log(matrix3x3x3[i][j][z]);
-		}
-	}
+// for (var i=0; i < matrix3x3x3.length; i++) {
+// 	for (var j=0; j < matrix3x3x3[i].length; j++) {
+// 		for (var z=0; z < matrix3x3x3[i][j].length; z++) {
+// 			console.log(matrix3x3x3[i][j][z]);
+// 		}
+// 	}
+// }
+
+
+
+// join multiple arrays
+
+var zero = 0;
+var positiveNumbers = [1,2,3];
+var negativeNumbers = [-3,-2,-1];
+var the_numbers = negativeNumbers.concat(zero, positiveNumbers);
+console.log(the_numbers);
+
+
+var numbers = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
+var isEven = function(x) {
+	// returns true if x is a multiple of 2
+	console.log(x);
+	console.log((x % 2 == 0) ? true : false);
+	return (x % 2 == 0) ? true : false;
 }
+
+numbers.every(isEven); // the first method we will look at is the very method
+// the every method will iterate each element of the array until the return of the function is false; in this case, our first element of the numbers array is the number 1. 1 is not a multiple of 2 (it is an odd number), so the isEven function will return false and this will be the only time the function will be executed
+
+numbers.some(isEven); // first element will return false, and the some function will keep looking for true
+// second element is Even, so it will return true and the iteration will stop
+
+// numbers.forEach(function(x){
+// 	console.log((x%2 == 0));
+// });
+
+
+// js has two other iterator methods that return a new array with a result:
+// first is map
+var myMap = numbers.map(isEven);
+
+var evenNumbers = numbers.filter(isEven);
+console.log("filter the evens ", evenNumbers);
+
+var numbers_reduce = numbers.reduce(function(previous, current, index){
+	return previous + current;
+});
+
+console.log(numbers_reduce);
+
+
+numbers.sort(function(a,b){
+	return (a-b);
+});
+
+
+var friends = [
+	{name: 'John', age: 30},
+	{name: 'Ana', age: 20},
+	{name: 'Chris', age: 25}
+];
+
+function comparePerson(a, b) {
+	if (a.age < b.age) {
+		return -1;
+	}
+	if (a.age > b.age) {
+		return 1;
+	}
+	return 0;
+}
+
+console.log(friends.sort(comparePerson));
+
+console.log(numbers.indexOf(10)); // yields 9
+		console.log(numbers.indexOf(100));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// STACKS
+// push and pop!
+
+function Stack() {
+	// pr
+}
+
+
+
+
 
 
 
