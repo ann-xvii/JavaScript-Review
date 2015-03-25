@@ -276,26 +276,106 @@
 
 	<strong>Example: </strong><p>Let's say we want to find out the first 20 numbers of the Fibonacci sequence. The first two numbers of the Fibonacci sequence here, the seed values, will be 1 and 2 (chosen starting point of sequence).</p>
 	<p>(we skip 0 because there is no 0 in the Fibonacci sequence)</p>
-	<p>Then all we have to do is create the 3rd to 20th number of the sequence (as we have seeded the first two numbers already).</p>
+	<p>Then all we have to do is create the 3rd to 21st number of the sequence (as we have seeded the first two numbers already).</p>
 	<p>To do so, we can use a loop and assign the sum of the previous two positions of the array to the current position</p>
 	<code><pre>
-		// declare and create array
-		var fibonacci = [];
-		// assign the first 2 numbers of the Fibonacci sequence to the second and third positions of the array
-		fibonacci[1] = 1;
-		fibonacci[2] = 1;
+	// declare and create array
+	var fibonacci = [];
+	// assign the first 2 numbers of the Fibonacci sequence to the second and third positions of the array
+	fibonacci[1] = 1;
+	fibonacci[2] = 1;
 
-		// create the third to the 20th number of the sequence, as we know the first 2 pre-seeded numbers already
-		for (var i = 3; i < 20; i++) {
-			// assign the previous two positions of the array to the current array position
-			fibonacci[i] = fibonacci[i-1] + fibonacci[i-2];
-		}
+	// create the third to the 21st number of the sequence, as we know the first 2 pre-seeded numbers already
+	for (var i = 3; i < 21; i++) {
+		// assign the previous two positions of the array to the current array position
+		fibonacci[i] = fibonacci[i-1] + fibonacci[i-2];
+	}
 
-		for (var i = 1; i < fibonacci.length; i++) {
-			console.log(fibonacci[i]);
-		}
+	for (var i = 1; i < fibonacci.length; i++) {
+		console.log(fibonacci[i]);
+	}
 	</pre></code>
 	<p>This task is well suited for the <strong>array</strong> data structure.</p>
+
+	<p><strong>Nota Bene:</strong> in JS, an array is a mutable object. We can easily add new elements to it. The object will grow dynamically as we add new elements to it. In many other languages, such as C and Java, we need to determine the size of the array, and if we need to add more elements to the array, we need to create a completely new array. We cannot simply add new elements to it as we need them</p>
+
+	<p>If we want to add a new element to the array below, e.g. the number 10, all we have to do is reference the latest free position of the array and assign a value to it.</p>
+	<code><pre>
+		var numbers = [0,1,2,3,4,5,6,7,8,9];
+		numbers[numbers.length] = 10;
+	</pre></code>
+	<p>There is also a method called <strong>push</strong></p>
+	<p><strong>push</strong> can take multiple arguments :D</p>
+
+	<strong>Example</strong>
+	<p>Say we need to add a new element to the array, and we would like to insert it in the first position, not the last...</p>
+	<p>To do so: </p>
+	<ol>
+		<li>first we need to free the first position by shifting all the elements to the right.</li>
+		<li>next we can loop through all the elements of the array <strong>starting from the last position+1 (length) </strong> and shifting the previous element to the new position to finally assign the new value we want to the first position (-1).</li>
+	</ol>
+	<p>The JS array class has the method <strong>unshift</strong></p>
+
+	<strong>Example</strong>
+	<p>To remove a value from the end of an array, we can use the <strong>pop</strong> method.</p>
+
+	<h3>Pro-Tip!</h3>
+	<p>The <strong>push</strong> and <strong>pop</strong> methods allow an array to emulate a basic <strong>stack </strong>data structure, which is the subject of the next chapter.</p>
+	<code><pre>
+	numbers.pop();
+	numbers.push(35);
+	</pre></code>
+
+	<h3>Pro-Tip!</h3>
+	<p>The <strong>shift </strong>and <strong>unshift</strong> methods allow an array to emulate a basic <strong>queue </strong>data structure, subject of Ch.4!</p>
+	<code><pre>
+	// implement unshift without using unshift method
+	for (var i = numbers.length; i >= 0; i--) {
+		// shift the previous element i - 1 to the new position
+		numbers[i] = numbers[i-1];
+	}
+	numbers[0] = -1;
+	console.log(numbers);
+	console.log(numbers.length);
+
+
+
+
+
+	// implement shift without using shift!
+	for (var i = 0; i < numbers.length; i++) {
+		// take an element i, and give its value to the space before it, evenutally overwriting the very first value!
+		numbers[i] = numbers[i+1];
+		// the length of the array is still the same, meaning that we still have an extra element in our array (with an undefined value)
+		//the last time the loop is executed, i+1 is a reference to a position that does not exist
+			// (in some languages, the code would throw an exception and we would have to end our loop at numbers.length - 1);
+	}
+	// takes care of extra undefined value
+	numbers.shift();
+	</pre></code>
+
+	<h3>Splice</h3>
+	<p>We can use the <strong>splice</strong> method to remove an element from an array by simply specifying the position/index we would like to delete from and how many elements we would like to remove:</p>
+
+	<code><pre>
+	numbers.splice(5, 3)
+	</pre></code>
+	<p>The above code will remove <strong>3 elements</strong> starting from <strong>index 5</strong> of our array</p>
+
+	<h3>Splice for Insertions</h3>
+	<code><pre>
+	numbers.splice(5,0,2,3,4);
+	</pre></code>
+	<p>The first argument of the method (here, 5) is the index we want to remove or insert elements from.</p>
+	<p>The second argument is the number of elements we want to remove (in this case, none, 0)</p>
+	<p>And the third argument (etc) are the values we would like to insert into the array (here, elements 2, 3, and 4).</p>
+
+
+	<h3>Multidimensional Arrays</h3>
+	<p>Javascript only supports 1 dimensional arrays; it does not support matrices; However, we can implement matrices or any multidimensional array by using an array of arrays</p>
+
+	<p>It does not matter how many dimensions we have in the data structurel we need to loop each dimension to access the cell; We can represent a 3 X 3 X 3 matrix with a cube diagram</p>
+
 </div>
 
 <h2>Ch.3 Stacks</h2>

@@ -152,15 +152,15 @@ function Book(title, pages, isbn){
 }
 
 var book = new Book('title', 'pag', 'isbn');
-console.log(book.title);
+// console.log(book.title);
 book.title = 'Generation P';
 book.isbn = 'isbnisbnisbn1234'
 // updates the value of the book title
-console.log(book.title); // outputs the updated value
-console.log(book.isbn);
+// console.log(book.title); // outputs the updated value
+// console.log(book.isbn);
 
 Book.prototype.printTitle = function(){
-	console.log(this.title + " yo");
+	// console.log(this.title + " yo");
 };
 book.printTitle();
 
@@ -170,7 +170,7 @@ function Book(title, pages, isbn) {
 	this.pages = pages;
 	this.isbn = isbn;
 	this.printIsbn = function(){
-		console.log(this.isbn);
+		// console.log(this.isbn);
 	}
 }
 
@@ -190,7 +190,7 @@ averageTemp[3] = 52;
 averageTemp[4] = 60.8;
 
 for (var i = 0; i < averageTemp.length; i++) {
-	console.log('Avg temp in the ' + i + ' month is ' +averageTemp[i]);
+	// console.log('Avg temp in the ' + i + ' month is ' +averageTemp[i]);
 }
 
 
@@ -204,10 +204,91 @@ var fibonacci = [];
 fibonacci[1] = 1;
 fibonacci[2] = 1;
 
-for (var i = 3; i < 20; i++) {
+for (var i = 3; i < 21; i++) {
 	fibonacci[i] = fibonacci[i-1] + fibonacci[i-2];
 }
 
 for (var i = 1; i < fibonacci.length; i++) {
-	console.log(fibonacci[i]);
+	// console.log(fibonacci[i]);
 }
+
+var numbers = [0,1,2,3,4,5,6,7,8,9];
+console.log(numbers);
+numbers[numbers.length] = 10;
+console.log(numbers);
+
+numbers.push(11);
+console.log(numbers);
+numbers.push(12, 13, 14, 9);
+console.log(numbers);
+
+
+// implement unshift without using unshift method
+for (var i = numbers.length; i >= 0; i--) {
+	// shift the previous element i - 1 to the new position
+	numbers[i] = numbers[i-1];
+}
+numbers[0] = -1;
+console.log(numbers);
+console.log(numbers.length);
+
+// implement shift without using shift!
+for (var i = 0; i < numbers.length; i++) {
+	// take an element i, and give its value to the space before it, evenutally overwriting the very first value!
+	numbers[i] = numbers[i+1];
+	// the length of the array is still the same, meaning that we still have an extra element in our array (with an undefined value)
+	//the last time the loop is executed, i+1 is a reference to a position that does not exist
+		// (in some languages, the code would throw an exception and we would have to end our loop at numbers.length - 1);
+}
+// takes care of extra undefined value
+numbers.shift();
+
+
+
+
+// day 1 
+averageTemp[ 0] = []; 
+averageTemp[ 0][ 0] = 72; 
+averageTemp[ 0][ 1] = 75; 
+averageTemp[ 0][ 2] = 79; 
+averageTemp[ 0][ 3] = 79; 
+averageTemp[ 0][ 4] = 81; 
+averageTemp[ 0][ 5] = 81; 
+// day 2 
+averageTemp[ 1] = []; 
+averageTemp[ 1][ 0] = 81; 
+averageTemp[ 1][ 1] = 79; 
+averageTemp[ 1][ 2] = 75; 
+averageTemp[ 1][ 3] = 75;
+averageTemp[ 1][ 4] = 73;
+averageTemp[ 1][ 5] = 72;
+
+function printMatrix(myMatrix) {
+	// loop through top level
+	for (var i = 0; i < myMatrix.length; i++) {
+		// loop through next level, so using [i]
+		for (var j = 0; j < myMatrix[i].length; j++) {
+			console.log(myMatrix[i][j]);
+		}
+	}
+}
+
+
+// multidimensional arrays
+
+var matrix3x3x3 = [];
+
+for (var i = 0; i < 3; i++) {
+	matrix3x3x3[i] = [];
+	for (var j = 0; j < 3; j++) {
+		matrix3x3x3[i][j] = [];
+		for (var z = 0; z < 3; z++) {
+			matrix3x3x3[i][j][z] = i+j+z;
+			console.log(matrix3x3x3);
+;		}
+	}
+}
+
+printMatrix(averageTemp);
+
+
