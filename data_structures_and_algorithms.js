@@ -390,12 +390,129 @@ console.log(numbers.indexOf(10)); // yields 9
 // push and pop!
 
 function Stack() {
-	// pr
+	// properties and methods go here
+
+	// first we need a data structure that will store the elements of the stack. we can use an array to do this
+	var items = [];
+
+	this.push = function (element) {
+		// adds a newe item or several items to the top of the stack
+		items.push(element);
+	}
+
+	// reoves the top item from the stack and returns removed element
+	this.pop = function(){
+		return items.pop();
+	}
+
+	this.peek = function(){
+		return items[items.length-1];
+	} // non destructive look at top element from stack
+	// as we are using an array to store the elements internally, we can obtain the last item from an array using length - 1
+
+	this.isEmpty = function(){
+		return items.length == 0;
+	} // true if stack contains no elements, false if stack size bigger than 0
+
+	this.clear = function(){
+		// referring to the global items array
+		items = [];
+	} // removes all elements of stack
+	// you could also call pop until the stack is empty
+
+
+	this.size = function(){
+		return items.length;
+	} // return how many elements the stack cnotains; similar to length property of an array
+
+	// herlper method, inspect contents of our stack!
+	this.print = function(){
+		console.log(items.toString());
+	}
+
 }
 
 
+// USING THE STACK CLASS
+
+var stack = new Stack();
+console.log(stack.isEmpty()); // outputs true
+
+// next lets add some elements to our stack we just instantiated
+
+stack.push(5);
+stack.push(8);
 
 
+console.log(stack.peek()); // returns 8
+
+stack.push(11);
+console.log(stack.size()); // outputs 3
+console.log(stack.isEmpty()); // false
+
+stack.push(15);
+
+stack.pop();
+stack.pop();
+console.log(stack.size()); // 2
+stack.print(); // 5 and 8
 
 
+function divideBy2(decNumber) {
 
+	var remStack = new Stack(),
+		rem,
+		binaryString = '';
+
+	while (decNumber > 0) {
+		rem = Math.floor(decNumber % 2);
+		remStack.push(rem);
+		decNumber = Math.floor(decNumber / 2);
+	}
+
+	while (!remStack.isEmpty()) {
+		binaryString += remStack.pop().toString();
+	}
+
+	return binaryString;
+}
+
+// in this code, while the division result is not zero, we get the remainder of the division, the modulous, and push it to the stack
+// finally we update the number that will be divided by 2
+// js has a numeric data type but it does ot distinguish integers from floating points
+// for this reason, we need to use the Math.floor function to obtain only the integer value from the division operations
+
+// finally we pop the elements from the stack until it is empty, concatenating the elements that were removed from the stack into a sring
+
+console.log(divideBy2(233));
+console.log(divideBy2(10));
+console.log(divideBy2(1000));
+
+
+// generalize converter to any base
+
+function baseConverter(decNumber, base) {
+
+	var remStack = new Stack(),
+		rem,
+		baseString = '',
+		digits = '0123456789ABCDEF';
+
+	while (decNumber > 0) {
+		rem = Math.floor(decNumber % base);
+		remStack.push(rem);
+		decNumber = Math.floor(decNumber / base);
+	}
+
+	while (!remStack.isEmpty()) {
+		baseString += digits[remStack.pop()];
+	}
+
+	return baseString;
+}
+
+
+console.log(baseConverter(233, 16));
+console.log(baseConverter(100345, 2));
+console.log(baseConverter(100345, 8));
+console.log(baseConverter(100345, 16));
